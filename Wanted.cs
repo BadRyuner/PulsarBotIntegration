@@ -30,4 +30,19 @@ namespace PulsarBotIntegration
 			});
 		}
 	}
+
+	[HarmonyPatch("PulsarModLoader.Patches.ModdedLobbyTag", "PatchMethod")]
+	static class WantedPatchPatch
+	{
+		static void Postfix(PLUIPlayMenu.UIJoinGameElement jge)
+		{
+			if (jge.Room.CustomProperties.TryGetValue("wanted", out object w))
+			{
+				var wanted = (Wanted)(byte)w;
+				if ((byte)w == 0) return;
+				
+				jge.GameName.text = jge.GameName.text + $" {(wanted.HasFlag(Wanted.Admiral) ? "<color=blue>Admiral</color> " : null)}{(wanted.HasFlag(Wanted.Pi) ? "<color=white>Pilot</color> " : null)}{(wanted.HasFlag(Wanted.Sci) ? "<color=green>Scientist</color> " : null)}{(wanted.HasFlag(Wanted.Weap) ? "<color=red>Weap.Spec. </color> " : null)}{(wanted.HasFlag(Wanted.Eng) ? "<color=orange>Engineer</color> " : null)}";
+			}
+		}
+	}
 }

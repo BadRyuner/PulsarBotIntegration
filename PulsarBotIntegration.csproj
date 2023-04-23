@@ -60,6 +60,10 @@
       <HintPath>..\..\Steam\steamapps\common\PULSARLostColony\PULSAR_LostColony_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>..\..\Steam\steamapps\common\PULSARLostColony\PULSAR_LostColony_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu.cs" />

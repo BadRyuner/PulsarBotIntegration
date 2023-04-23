@@ -10,7 +10,7 @@ namespace PulsarBotIntegration
 		public override string HarmonyIdentifier() => "BadRyuner.PulsarBotIntegrations";
 		public override string Author => "PulsarBot";
 		public override string Name => "PulsarBot Integrations";
-		public override string Version => "1.0";
+		public override string Version => "1.1";
 		public override int MPRequirements => (int)MPRequirement.None;
 
 		public Mod()
