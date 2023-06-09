@@ -1,6 +1,7 @@
 ﻿using ExitGames.Client.Photon;
 using HarmonyLib;
 using System;
+using System.Reflection;
 
 namespace PulsarBotIntegration
 {
@@ -31,9 +32,11 @@ namespace PulsarBotIntegration
 		}
 	}
 
-	[HarmonyPatch("PulsarModLoader.Patches.ModdedLobbyTag", "PatchMethod")]
+	[HarmonyPatch]
 	static class WantedPatchPatch
 	{
+		public static MethodBase TargetMethod() => AccessTools.Method(AccessTools.TypeByName("PulsarModLoader.Patches.ModdedLobbyTag"), "PatchMethod");
+
 		static void Postfix(PLUIPlayMenu.UIJoinGameElement jge)
 		{
 			if (jge.Room.CustomProperties.TryGetValue("wanted", out object w))
@@ -41,7 +44,7 @@ namespace PulsarBotIntegration
 				var wanted = (Wanted)(byte)w;
 				if ((byte)w == 0) return;
 				
-				jge.GameName.text = jge.GameName.text + $" {(wanted.HasFlag(Wanted.Admiral) ? "<color=blue>Admiral</color> " : null)}{(wanted.HasFlag(Wanted.Pi) ? "<color=white>Pilot</color> " : null)}{(wanted.HasFlag(Wanted.Sci) ? "<color=green>Scientist</color> " : null)}{(wanted.HasFlag(Wanted.Weap) ? "<color=red>Weap.Spec. </color> " : null)}{(wanted.HasFlag(Wanted.Eng) ? "<color=orange>Engineer</color> " : null)}";
+				jge.GameName.text = jge.GameName.text + $" {(wanted.HasFlag(Wanted.Admiral) ? "<color=blue>A</color> " : null)}{(wanted.HasFlag(Wanted.Pi) ? "<color=white>P</color> " : null)}{(wanted.HasFlag(Wanted.Sci) ? "<color=green>S</color> " : null)}{(wanted.HasFlag(Wanted.Weap) ? "<color=red>W</color> " : null)}{(wanted.HasFlag(Wanted.Eng) ? "<color=orange>E</color> " : null)}";
 			}
 		}
 	}
