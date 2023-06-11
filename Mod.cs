@@ -10,7 +10,7 @@ namespace PulsarBotIntegration
 		public override string HarmonyIdentifier() => "BadRyuner.PulsarBotIntegrations";
 		public override string Author => "PulsarBot";
 		public override string Name => "PulsarBot Integrations";
-		public override string Version => "1.1";
+		public override string Version => "1.3";
 		public override int MPRequirements => (int)MPRequirement.None;
 
 		public Mod()
@@ -24,7 +24,7 @@ namespace PulsarBotIntegration
 			Logger.Info($"FleetModIntegration is {FleetModIntegration}");
 		}
 
-		public override string VersionLink => "";
+		public override string VersionLink => "https://raw.githubusercontent.com/BadRyuner/PulsarBotIntegration/master/Version.json";
 
 		public static bool FleetModIntegration;
 		public static Wanted Wanted = Wanted.None;
