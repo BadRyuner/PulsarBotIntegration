@@ -24,6 +24,8 @@ namespace PulsarBotIntegration
 			Logger.Info($"FleetModIntegration is {FleetModIntegration}");
 		}
 
+		public override string VersionLink => "";
+
 		public static bool FleetModIntegration;
 		public static Wanted Wanted = Wanted.None;
 	}
